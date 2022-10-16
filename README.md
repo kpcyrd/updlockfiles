@@ -12,7 +12,7 @@ Add a function like this to your PKGBUILD:
 ```sh
 updlockfiles() {
   cd ${pkgname}
-  rm -rf composer.lock
+  rm -f composer.lock
   composer update
   cp composer.lock "${outdir}/"
 }

@@ -25,7 +25,7 @@ prepare() {
 
 updlockfiles() {
   cd ${pkgname}
-  rm -rf composer.lock
+  rm -f composer.lock
   composer update
   cp composer.lock "${outdir}/"
 }
