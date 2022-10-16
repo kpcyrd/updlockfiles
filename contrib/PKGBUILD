@@ -1,0 +1,43 @@
+# Maintainer: kpcyrd <kpcyrd[at]archlinux[dot]org>
+
+pkgname=psalm
+pkgver=4.29.0
+pkgrel=1
+_commit=7ec5ffbd5f68ae03782d7fd33fff0c45a69f95b3
+pkgdesc='A static analysis tool for finding errors in PHP applications'
+url="https://psalm.dev/"
+arch=('any')
+license=('MIT')
+depends=('php')
+makedepends=('composer' 'php7' 'git')
+source=("git+https://github.com/vimeo/psalm.git#commit=${_commit}"
+        "composer.lock")
+b2sums=('SKIP'
+        'fa4ae7505926c4e44e95b96bcd763695105b1816e181169f91b417dd4e507961193d1cbb28263ad81e561f30b39ccfc942157ebcbc22ec5ea7895f30c50526a3')
+
+prepare() {
+  cd ${pkgname}
+  cp ../composer.lock .
+  composer install
+  php7 /usr/bin/composer bin box install
+  php bin/improve_class_alias.php
+}
+
+updlockfiles() {
+  cd ${pkgname}
+  rm -rf composer.lock
+  composer update
+  cp composer.lock "${outdir}/"
+}
+
+build() {
+  cd ${pkgname}
+  vendor/bin/box compile
+}
+
+package() {
+  cd ${pkgname}
+  install -Dm 755 ./build/psalm.phar "${pkgdir}/usr/bin/psalm"
+}
+
+# vim: ts=2 sw=2 et:
