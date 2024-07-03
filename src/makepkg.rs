@@ -4,7 +4,7 @@ use std::process::Command;
 pub fn unpack() -> Result<()> {
     info!("Executing makepkg to unpack source code...");
     let status = Command::new("makepkg")
-        .args(&["--nodeps", "--noprepare", "--nobuild"])
+        .args(["--nodeps", "--noprepare", "--nobuild"])
         .spawn()?
         .wait()?;
     if !status.success() {
