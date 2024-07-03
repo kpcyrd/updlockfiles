@@ -19,7 +19,7 @@ fn update() -> Result<()> {
     let cmd = "source ./PKGBUILD && cd src && updlockfiles";
     debug!("Executing shell command: {:?}", cmd);
     let status = Command::new("sh")
-        .args(&["-ec", cmd])
+        .args(["-ec", cmd])
         .env("outdir", tmp_path)
         .spawn()?
         .wait()?;
