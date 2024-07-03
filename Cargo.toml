@@ -1,6 +1,6 @@
 [package]
 name = "updlockfiles"
-version = "0.1.0"
+version = "0.1.1"
 description = "Manage lockfiles in PKGBUILDs for upstreams that don't ship them, `updpkgsums` for dependency trees (Arch Linux tooling)"
 license = "GPL-3.0"
 repository = "https://github.com/kpcyrd/updlockfiles"
