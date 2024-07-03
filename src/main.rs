@@ -9,10 +9,9 @@ use env_logger::Env;
 use std::env;
 use std::fs;
 use std::process::Command;
-use tempdir::TempDir;
 
 fn update() -> Result<()> {
-    let tmp_dir = TempDir::new("updlockfiles")?;
+    let tmp_dir = tempfile::Builder::new().prefix("updlockfiles").tempdir()?;
     let tmp_path = tmp_dir.path();
     debug!("Generated temporary directory: {:?}", tmp_path);
 
