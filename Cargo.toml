@@ -4,7 +4,7 @@ version = "0.1.1"
 description = "Manage lockfiles in PKGBUILDs for upstreams that don't ship them, `updpkgsums` for dependency trees (Arch Linux tooling)"
 license = "GPL-3.0"
 repository = "https://github.com/kpcyrd/updlockfiles"
-edition = "2021"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
